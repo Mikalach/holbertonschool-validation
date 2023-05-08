@@ -19,5 +19,5 @@ test: ## Test the application.
 	curl http://localhost:$(PORT)/
 	curl http://localhost:$(PORT)/health
 
-help: ## show an help
-    @fgrep -h "##" $(MAKEFILE_LIST) | sed -e 's/\(\:.*\#\#\)/\:\ /' | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+help: ## Print this help message
+	-grep "##" Makefile | head -n -1 | tr -d '#' 
