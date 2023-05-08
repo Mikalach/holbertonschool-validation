@@ -2,31 +2,21 @@
 APP_NAME = awesome-api
 PORT = 9999
 
-# targets
 build:
-	go build -o $(APP_NAME) .
+	go build
 
 run:
 	./$(APP_NAME) > ./$(APP_NAME).log 2>&1 &
 
 stop:
-	kill "$(pgrep $(APP_NAME))"
+	pgrep $(APP_NAME) | xargs kill
 
 clean: stop
-	rm -f $(APP_NAME) $(APP_NAME).log
+	rm $(APP_NAME) $(APP_NAME).log
 
 test: run
-	curl -sS http://localhost:$(PORT)/
-	curl -sS http://localhost:$(PORT)/health
-
-format:
-	go fmt ./...
-
-vet:
-	go vet ./...
-
-lint:
-	golint ./...
+	curl http://localhost:$(PORT)/
+	curl http://localhost:$(PORT)/health
 
 help:
 	@echo "help: Print this help message."
