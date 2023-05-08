@@ -23,6 +23,6 @@ help:
 	@echo "build: Compile the source code of the application."
 	@echo "run: Run the application."
 	@echo "stop: Stop the running application."
-	@echo "clean: Remove the compiled binary and log file."
+	@echo "clean: Clean the compiled binary and log file."
 	@echo "test: Test the application."
 	@echo "format: Format the code."
