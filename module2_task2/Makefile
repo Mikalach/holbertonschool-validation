@@ -23,5 +23,9 @@ test: ## Test the application.
 lint: ## Lint the code
 	golangci-lint run
 
+
+unit-test: ## Do the unit tests
+	go test -v -short -coverprofile=coverage-units.out
+
 help: ## Print this help message
 	-grep "##" Makefile | head -n -1 | tr -d '#' 
