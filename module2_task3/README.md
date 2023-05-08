@@ -16,4 +16,4 @@ help:
 	@echo "format: Format the code."
 	@echo "lint: use the linter to handle the go file'
 	@echo "unit-tests: run unit tests"
-	@echo "integration_tests: run integration tests"
+	@echo "integration-tests: run integration tests"
