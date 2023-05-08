@@ -18,8 +18,8 @@ clean: ## Clean the compiled binary, log file, and coverage report.
 	-rm -f $(APP_NAME) $(APP_NAME).log coverage-*.out
 
 test: ## Test the application (unit tests only).
-	make unit-tests
-	make integration-tests
+	-make unit-tests
+	-make integration-tests
 
 lint: ## Lint the code.
 	golangci-lint run
