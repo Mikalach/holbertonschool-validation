@@ -14,3 +14,4 @@ help:
 	@echo "clean: Clean the compiled binary and log file."
 	@echo "test: Test the application."
 	@echo "format: Format the code."
+	@echo "lint: use the linter to handle the go file'
