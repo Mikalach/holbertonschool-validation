@@ -14,7 +14,7 @@ stop: ## Stop the running application.
 clean: stop ## Clean the compiled binary and log file.
 	rm $(APP_NAME) $(APP_NAME).log
 
-test: run ## Test the application.
+test: ## Test the application.
 	curl http://localhost:$(PORT)/
 	curl http://localhost:$(PORT)/health
 
