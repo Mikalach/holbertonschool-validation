@@ -25,7 +25,7 @@ lint: ## Lint the code
 	golangci-lint run
 
 
-unit-test: ## Do the unit tests
+unit-tests: ## Do the unit tests
 	go test -v -short -coverprofile=coverage-units.out
 
 help: ## Print this help message
