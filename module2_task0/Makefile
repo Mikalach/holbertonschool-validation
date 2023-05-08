@@ -19,10 +19,5 @@ test: ## Test the application.
 	curl http://localhost:$(PORT)/
 	curl http://localhost:$(PORT)/health
 
-help: ## Print this help message
-	@echo "help: Print this help message."
-	@echo "build: Compile the source code of the application."
-	@echo "run: Run the application."
-	@echo "stop: Stop the running application."
-	@echo "clean: clean the compiled binary and log file."
-	@echo "test: Test the application."
+help: ## show an help
+    @fgrep -h "##" $(MAKEFILE_LIST) | sed -e 's/\(\:.*\#\#\)/\:\ /' | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
