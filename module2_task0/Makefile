@@ -11,7 +11,8 @@ run: ## Run the application.
 stop: ## Stop the running application.
 	pgrep $(APP_NAME) | xargs kill
 
-clean: stop ## Clean the compiled binary and log file.
+clean: ## Clean the compiled binary and log file.
+	make stop
 	rm $(APP_NAME) $(APP_NAME).log
 
 test: ## Test the application.
