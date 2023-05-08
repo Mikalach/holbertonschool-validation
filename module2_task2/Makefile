@@ -4,6 +4,7 @@ PORT = 9999
 
 build: ## Compile the source code of the application.
 	make lint
+	-go mod init github.com/Mikalach/$(APP_NAME)
 	go build
 
 run: ## Run the application.
