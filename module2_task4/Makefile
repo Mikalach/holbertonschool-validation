@@ -1,34 +1,25 @@
-# variables
-APP_NAME = awesome-api
-PORT = 9999
+# Makefile
+## executable variable
+HUGO_EXECUTABLE := hugo
 
-build: ## Compile the source code of the application.
-	make lint
-	-go mod init github.com/Mikalach/$(APP_NAME)
-	go hugo
+help: ## command help
+	fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-run: ## Run the application.
-	./$(APP_NAME) > ./$(APP_NAME).log 2>&1 &
+build: ## build files
+	./setup.sh
+	make check
+	hugo
 
-stop: ## Stop the running application.
-	pgrep $(APP_NAME) | xargs kill
+check:## Check if post is valid
+	markdownlint -f ./content/posts/*.md
+	markdown-link-check ./content/posts/*.md
 
-clean: ## Clean the compiled binary, log file, and coverage report.
-	-make stop
-	-rm -f $(APP_NAME) $(APP_NAME).log coverage-*.out
+validate:## Validate the index
+	-./w3c_validator.py ./dist/index.html
 
-test: ## Test the application (unit tests only).
-	-make unit-tests
-	-make integration-tests
+clean: ## remove all file force ignore nonexistent files
+	rm -Rf dist/*
 
-lint: ## Lint the code.
-	golangci-lint run
-
-unit-tests: ## Run the unit tests.
-	go test -v -short -coverprofile=coverage-units.out
-
-integration-tests: ## Run the integration tests.
-	go test -v -coverprofile=coverage-integrations.out
-
-help: ## Print this help message.
-	-grep "##" Makefile | head -n -1 | tr -d '#' 
+post: ## create new post
+	$(HUGO_EXECUTABLE) new posts/$(POST_NAME).md
+	sed -i 's/title:.*/title: "$(POST_TITLE)"/' content/posts/$(POST_NAME).md
