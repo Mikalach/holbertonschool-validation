@@ -1,5 +1,4 @@
 build: check ## compile the source code
-	./setup.sh >/dev/null 2&>1
 	hugo
 
 run: ## Run the application in background
