@@ -4,7 +4,7 @@ go 1.15._
 npm 7+
 node 14._
 
-## Lifecycle
+## Lifecycle 
 
 build: Build the website
 clean: Clean the website
